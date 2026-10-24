@@ -1,0 +1,496 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitLife | Online Fitness App</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f5f8f5;
+  color: #203128;
+}
+
+header {
+  background: #123b2a;
+  color: white;
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  color: #8ff0a4;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+button {
+  border: none;
+  background: #24a65a;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #168345;
+}
+
+.hero {
+  padding: 75px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  background: linear-gradient(120deg, #e0f7e6, #f8fff9);
+  flex-wrap: wrap;
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 260px;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 5vw, 55px);
+  margin-bottom: 20px;
+  line-height: 1.15;
+}
+
+.hero h1 span {
+  color: #24a65a;
+}
+
+.hero p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: #53655a;
+}
+
+.hero img {
+  width: 100%;
+  max-width: 440px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+section {
+  padding: 55px 7%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.section-title p {
+  color: #66766c;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 22px;
+  box-shadow: 0 5px 18px #183b2a12;
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+}
+
+.card p {
+  color: #657268;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.price {
+  color: #168345;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.highlight {
+  background: #123b2a;
+  color: white;
+}
+
+.highlight p {
+  color: #d4e8da;
+}
+
+.highlight .price {
+  color: #8ff0a4;
+}
+
+.panel {
+  max-width: 550px;
+  margin: auto;
+  background: white;
+  padding: 28px;
+  border-radius: 15px;
+  box-shadow: 0 5px 18px #183b2a12;
+}
+
+input, select {
+  width: 100%;
+  padding: 13px;
+  margin: 9px 0 16px;
+  border: 1px solid #d5ded7;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+#result, #loginMessage {
+  margin-top: 16px;
+  line-height: 1.7;
+  color: #168345;
+  font-weight: bold;
+}
+
+footer {
+  background: #123b2a;
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+@media (max-width: 650px) {
+  header {
+    flex-direction: column;
+  }
+
+  nav {
+    text-align: center;
+    line-height: 2.3;
+  }
+
+  .hero {
+    padding: 45px 6%;
+  }
+
+  section {
+    padding: 40px 6%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">💪 FitLife</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#workouts">Workouts</a>
+    <a href="#diet">Diet Planner</a>
+    <a href="#blog">Blog</a>
+    <a href="#videos">Videos</a>
+    <a href="#plans">Plans</a>
+    <a href="#login">Login</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Build Your Best <span>Self.</span></h1>
+    <p>
+      Your personal fitness companion. Discover workouts,
+      plan healthy meals, watch fitness videos and achieve
+      your health goals from anywhere.
+    </p>
+    <button onclick="document.getElementById('workouts').scrollIntoView({behavior:'smooth'})">
+      Explore Workouts
+    </button>
+  </div>
+
+  <img
+    src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80"
+    alt="Modern fitness gym">
+</section>
+
+<section id="workouts">
+  <div class="section-title">
+    <h2>Workout Programs</h2>
+    <p>Choose a workout that suits your fitness goals.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80" alt="Yoga workout">
+      <h3>Yoga & Flexibility</h3>
+      <p>Improve flexibility, balance and relaxation with simple yoga routines.</p>
+      <button onclick="startWorkout('Yoga & Flexibility')">Start Workout</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&q=80" alt="Strength training">
+      <h3>Strength Training</h3>
+      <p>Build strength with beginner-friendly resistance exercises.</p>
+      <button onclick="startWorkout('Strength Training')">Start Workout</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=600&q=80" alt="Cardio workout">
+      <h3>Cardio Fitness</h3>
+      <p>Improve endurance with walking, jogging and cardio exercises.</p>
+      <button onclick="startWorkout('Cardio Fitness')">Start Workout</button>
+    </div>
+  </div>
+  <p id="workoutMessage" role="status"></p>
+</section>
+
+<section id="diet" style="background:#eaf6ed">
+  <div class="section-title">
+    <h2>Smart Diet Planner</h2>
+    <p>Get a simple meal-plan suggestion based on your preference.</p>
+  </div>
+
+  <div class="panel">
+    <label for="goal">Fitness Goal</label>
+    <select id="goal">
+      <option value="balanced">Healthy Balanced Diet</option>
+      <option value="muscle">Muscle Building</option>
+      <option value="weight">Weight Management</option>
+    </select>
+
+    <label for="dietType">Food Preference</label>
+    <select id="dietType">
+      <option value="veg">Vegetarian</option>
+      <option value="nonveg">Non-Vegetarian</option>
+    </select>
+
+    <button onclick="createDiet()">Generate Meal Plan</button>
+    <div id="result" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="section-title">
+    <h2>Fitness Blog</h2>
+    <p>Simple tips for a healthier lifestyle.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>🥗 Healthy Eating</h3>
+      <p>Eat a variety of vegetables, fruits, whole grains and protein-rich foods.</p>
+    </div>
+    <div class="card">
+      <h3>💧 Stay Hydrated</h3>
+      <p>Drink water regularly throughout the day and during exercise.</p>
+    </div>
+    <div class="card">
+      <h3>😴 Rest & Recovery</h3>
+      <p>Allow your body to recover and maintain a consistent sleep schedule.</p>
+    </div>
+  </div>
+</section>
+
+<section id="videos" style="background:#eaf6ed">
+  <div class="section-title">
+    <h2>Fitness Videos</h2>
+    <p>Explore guided exercise videos.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Beginner Workout</h3>
+      <p>Learn basic exercises and build a consistent workout routine.</p>
+      <a href="https://www.youtube.com/results?search_query=beginner+full+body+workout" target="_blank" rel="noopener noreferrer">
+        <button>Watch Videos ▶</button>
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>Yoga Session</h3>
+      <p>Explore beginner yoga and stretching sessions.</p>
+      <a href="https://www.youtube.com/results?search_query=beginner+yoga+session" target="_blank" rel="noopener noreferrer">
+        <button>Watch Videos ▶</button>
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>Cardio Training</h3>
+      <p>Find guided cardio routines for different fitness levels.</p>
+      <a href="https://www.youtube.com/results?search_query=beginner+cardio+workout" target="_blank" rel="noopener noreferrer">
+        <button>Watch Videos ▶</button>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="plans">
+  <div class="section-title">
+    <h2>Membership Plans</h2>
+    <p>Choose a plan to explore membership options.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Free Plan</h3>
+      <div class="price">₹0</div>
+      <p>Basic workouts<br>Fitness blog<br>Basic diet suggestions</p>
+      <button onclick="choosePlan('Free Plan')">Select Plan</button>
+    </div>
+
+    <div class="card highlight">
+      <h3>Premium Plan</h3>
+      <div class="price">₹299</div>
+      <p>Advanced workouts<br>Expanded meal plans<br>Premium content</p>
+      <button onclick="choosePlan('Premium Plan')">Select Plan</button>
+    </div>
+
+    <div class="card">
+      <h3>Annual Plan</h3>
+      <div class="price">₹1999</div>
+      <p>Annual membership<br>Workout programs<br>Premium content</p>
+      <button onclick="choosePlan('Annual Plan')">Select Plan</button>
+    </div>
+  </div>
+  <p id="planMessage" style="text-align:center;margin-top:20px" aria-live="polite"></p>
+</section>
+
+<section id="login" style="background:#eaf6ed">
+  <div class="section-title">
+    <h2>Member Login / Register</h2>
+    <p>Try the demo form to see the interface working.</p>
+  </div>
+
+  <div class="panel">
+    <form id="loginForm">
+      <label for="name">Full Name (for registration)</label>
+      <input id="name" type="text" placeholder="Enter your name">
+
+      <label for="email">Email Address</label>
+      <input id="email" type="email" placeholder="Enter your email" required>
+
+      <label for="password">Password</label>
+      <input id="password" type="password" placeholder="Enter a password" required>
+
+      <button type="submit">Register / Login</button>
+    </form>
+    <div id="loginMessage" aria-live="polite"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 FitLife | Online Body Fitness App</p>
+  <p style="margin-top:8px">Stay active. Eat well. Feel better.</p>
+</footer>
+
+<script>
+function startWorkout(name) {
+  document.getElementById("workoutMessage").textContent =
+    name + " selected! Follow the exercises at your own pace.";
+}
+
+function createDiet() {
+  const goal = document.getElementById("goal").value;
+  const type = document.getElementById("dietType").value;
+
+  const protein = type === "veg"
+    ? "dal, beans, paneer or tofu"
+    : "eggs, fish or lean chicken";
+
+  let meals;
+
+  if (goal === "muscle") {
+    meals = "Breakfast: oats and milk. Lunch: rice, vegetables and " +
+      protein + ". Snack: yogurt or nuts. Dinner: balanced meal with " +
+      protein + ".";
+  } else if (goal === "weight") {
+    meals = "Breakfast: oats or fruit. Lunch: vegetables, whole grains " +
+      "and " + protein + ". Snack: fruit. Dinner: vegetables and " +
+      protein + " with a balanced portion of grains.";
+  } else {
+    meals = "Breakfast: fruit and whole grains. Lunch: vegetables, " +
+      "grains and " + protein + ". Snack: nuts or fruit. Dinner: a " +
+      "varied, balanced meal.";
+  }
+
+  document.getElementById("result").innerHTML =
+    "<strong>Your sample meal plan</strong><br>" + meals +
+    "<br><br><small>General suggestions only. Adjust portions to your needs.</small>";
+}
+
+function choosePlan(plan) {
+  document.getElementById("planMessage").textContent =
+    plan + " selected. Please log in to continue with membership registration.";
+  document.getElementById("login").scrollIntoView({behavior: "smooth"});
+}
+
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
+  if (password.length < 6) {
+    document.getElementById("loginMessage").textContent =
+      "For this demo, enter a password with at least 6 characters.";
+    return;
+  }
+
+  const displayName = name || email.split("@")[0];
+
+  document.getElementById("loginMessage").textContent =
+    "Welcome, " + displayName + "! Demo login successful.";
+
+  this.reset();
+});
+</script>
+
+</body>
+</html>
