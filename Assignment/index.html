@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCare - Health & Self-Care</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <h2>🌿 MindCare</h2>
+        <button id="logoutBtn" class="nav-btn hidden"
+                onclick="logout()">Logout</button>
+    </header>
+
+    <!-- LOGIN SECTION -->
+    <section id="loginPage" class="auth-container">
+        <div class="auth-card">
+            <div class="logo">🌿</div>
+            <h1>Welcome to MindCare</h1>
+            <p>Take care of your mind and body.</p>
+
+            <form id="loginForm">
+                <label>Email Address</label>
+                <input type="email" id="loginEmail"
+                       placeholder="Enter your email" required>
+
+                <label>Password</label>
+                <input type="password" id="loginPassword"
+                       placeholder="Enter your password" required>
+
+                <button type="submit" class="primary-btn">Login</button>
+            </form>
+
+            <p class="switch-text">
+                Don't have an account?
+                <a href="#" onclick="showRegister(event)">Register</a>
+            </p>
+            <p id="loginMessage" class="message"></p>
+        </div>
+    </section>
+
+    <!-- REGISTER SECTION -->
+    <section id="registerPage" class="auth-container hidden">
+        <div class="auth-card">
+            <div class="logo">💚</div>
+            <h1>Create Account</h1>
+            <p>Begin your self-care journey today.</p>
+
+            <form id="registerForm">
+                <label>Full Name</label>
+                <input type="text" id="regName"
+                       placeholder="Enter your name" required>
+
+                <label>Email Address</label>
+                <input type="email" id="regEmail"
+                       placeholder="Enter your email" required>
+
+                <label>Password</label>
+                <input type="password" id="regPassword"
+                       placeholder="Create a password"
+                       minlength="6" required>
+
+                <button type="submit" class="primary-btn">
+                    Register
+                </button>
+            </form>
+
+            <p class="switch-text">
+                Already registered?
+                <a href="#" onclick="showLogin(event)">Login</a>
+            </p>
+            <p id="registerMessage" class="message"></p>
+        </div>
+    </section>
+
+    <!-- HOME DASHBOARD -->
+    <main id="homePage" class="hidden">
+
+        <section class="hero">
+            <div>
+                <p class="tagline">YOUR DAILY WELLNESS SPACE</p>
+                <h1 id="welcomeTitle">Hello, Friend! 🌸</h1>
+                <p>Small steps today create a healthier tomorrow.</p>
+                <button class="hero-btn"
+                        onclick="scrollToSection('healthBlogs')">
+                    Explore Wellness
+                </button>
+            </div>
+            <div class="hero-emoji">🧘‍♀️</div>
+        </section>
+
+        <section class="daily-card">
+            <div>
+                <h3>🌞 Your Daily Reminder</h3>
+                <p>Take a deep breath, drink water, and give yourself a break.</p>
+            </div>
+        </section>
+
+        <!-- HEALTH ROUTINE BLOGS -->
+        <section id="healthBlogs" class="content-section">
+            <div class="section-heading">
+                <div>
+                    <p class="tagline">BUILD HEALTHY HABITS</p>
+                    <h2>Health Routine Blogs</h2>
+                </div>
+                <span class="section-icon">🌱</span>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image morning">🌅</div>
+                    <div class="blog-content">
+                        <span class="category">Morning Routine</span>
+                        <h3>Start Your Day Right</h3>
+                        <p>Wake up gently, stretch, hydrate, and set a positive intention.</p>
+                        <button class="read-btn"
+                          onclick="readBlog('Start Your Day Right',
+                          'Begin with a glass of water, gentle stretching, a nutritious breakfast, and a few quiet minutes to plan your day.')">
+                          Read More →
+                        </button>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image meditation">🧘</div>
+                    <div class="blog-content">
+                        <span class="category">Mindfulness</span>
+                        <h3>5-Minute Meditation</h3>
+                        <p>Make space for calm with a short breathing practice.</p>
+                        <button class="read-btn"
+                          onclick="readBlog('5-Minute Meditation',
+                          'Sit comfortably. Breathe in slowly and breathe out gently. Notice your breath for five minutes. When thoughts arise, calmly return your attention to breathing.')">
+                          Read More →
+                        </button>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image exercise">🚶</div>
+                    <div class="blog-content">
+                        <span class="category">Daily Exercise</span>
+                        <h3>Move Your Body</h3>
+                        <p>Discover how gentle movement can support your wellbeing.</p>
+                        <button class="read-btn"
+                          onclick="readBlog('Move Your Body',
+                          'Try a comfortable walk, simple stretches, or light exercise. Start slowly, take breaks, and choose activities that suit your abilities.')">
+                          Read More →
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SELF-CARE BLOGS -->
+        <section id="selfCareBlogs" class="content-section">
+            <div class="section-heading">
+                <div>
+                    <p class="tagline">YOU DESERVE CARE</p>
+                    <h2>Self-Care Blogs</h2>
+                </div>
+                <span class="section-icon">💗</span>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image journal">📔</div>
+                    <div class="blog-content">
+                        <span class="category">Mental Wellness</span>
+                        <h3>Practice Gratitude</h3>
+                        <p>Write down a few things you appreciate each day.</p>
+                        <button class="read-btn"
+                          onclick="readBlog('Practice Gratitude',
+                          'Write down three things you appreciate today. They can be simple moments, supportive people, or something you achieved. There is no need to force positivity.')">
+                          Read More →
+                        </button>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image sleep">🌙</div>
+                    <div class="blog-content">
+                        <span class="category">Better Sleep</span>
+                        <h3>Create a Calm Evening</h3>
+                        <p>Build a relaxing bedtime routine to wind down.</p>
+                        <button class="read-btn"
+                          onclick="readBlog('Create a Calm Evening',
+                          'Try dimming the lights, reducing screen time, reading a book, and keeping a regular bedtime. Choose a routine that helps you feel relaxed.')">
+                          Read More →
+                        </button>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image selflove">💚</div>
+                    <div class="blog-content">
+                        <span class="category">Self-Love</span>
+                        <h3>Make Time for Yourself</h3>
+                        <p>Set healthy boundaries and enjoy activities you love.</p>
+                        <button class="read-btn"
+                          onclick="readBlog('Make Time for Yourself',
+                          'Schedule a little time for an activity you enjoy. Rest when needed, set reasonable boundaries, and speak to yourself with kindness.')">
+                          Read More →
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <footer>
+            <h3>🌿 MindCare</h3>
+            <p>Your wellbeing matters. Take one gentle step at a time.</p>
+            <p>© 2026 MindCare | Health & Self-Care</p>
+        </footer>
+    </main>
+
+    <!-- BLOG READER MODAL -->
+    <div id="blogModal" class="modal hidden">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeBlog()">✕</button>
+            <p class="tagline">MINDCARE WELLNESS</p>
+            <h2 id="modalTitle"></h2>
+            <p id="modalText"></p>
+            <button class="primary-btn" onclick="closeBlog()">Done</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
