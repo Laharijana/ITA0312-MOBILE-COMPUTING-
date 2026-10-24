@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkEase | Smart Parking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <a class="brand" href="#" onclick="showDashboard(); return false;">
+        <span class="brand-icon">P</span>
+        ParkEase<span class="dot">.</span>
+    </a>
+    <nav>
+        <a href="#parking" onclick="showDashboard()">Find Parking</a>
+        <a href="#myBooking" onclick="showDashboard()">My Booking</a>
+        <button id="logoutBtn" class="outline-btn hidden"
+                onclick="logout()">Logout</button>
+    </nav>
+</header>
+
+<!-- LOGIN -->
+<section id="loginPage" class="auth-page">
+    <div class="auth-art">
+        <span class="art-label">SMART PARKING MADE SIMPLE</span>
+        <h1>Your perfect<br>parking spot is<br><span>just a click away.</span></h1>
+        <p>Find available spaces, reserve your spot, and enjoy a stress-free journey.</p>
+        <div class="art-car">🚘</div>
+        <div class="art-stats">
+            <div><strong>Easy</strong><small>Slot selection</small></div>
+            <div><strong>Quick</strong><small>Booking process</small></div>
+            <div><strong>Simple</strong><small>Parking access</small></div>
+        </div>
+    </div>
+
+    <div class="auth-panel">
+        <div class="auth-card">
+            <div class="mobile-logo">🅿️ ParkEase</div>
+            <p class="eyebrow">WELCOME BACK</p>
+            <h2>Sign in to ParkEase</h2>
+            <p class="muted">Your parking space is waiting for you.</p>
+
+            <form id="loginForm">
+                <label for="loginEmail">Email address</label>
+                <input type="email" id="loginEmail"
+                       placeholder="you@example.com" required>
+
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword"
+                       placeholder="Enter your password" required>
+
+                <button class="primary-btn full-btn">Sign In →</button>
+            </form>
+            <p id="loginMessage" class="message"></p>
+            <p class="switch">New to ParkEase?
+                <a href="#" onclick="showRegister(event)">Create account</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- REGISTER -->
+<section id="registerPage" class="auth-page hidden">
+    <div class="auth-art">
+        <span class="art-label">WELCOME TO PARKEASE</span>
+        <h1>Park smarter.<br>Travel <span>better.</span></h1>
+        <p>Create your account to discover parking spaces and manage your bookings.</p>
+        <div class="art-car">🚗</div>
+    </div>
+
+    <div class="auth-panel">
+        <div class="auth-card">
+            <div class="mobile-logo">🅿️ ParkEase</div>
+            <p class="eyebrow">GET STARTED</p>
+            <h2>Create your account</h2>
+            <p class="muted">Join and make parking easier.</p>
+
+            <form id="registerForm">
+                <label for="regName">Full name</label>
+                <input id="regName" type="text"
+                       placeholder="Your full name" required>
+
+                <label for="regEmail">Email address</label>
+                <input id="regEmail" type="email"
+                       placeholder="you@example.com" required>
+
+                <label for="regPassword">Password</label>
+                <input id="regPassword" type="password"
+                       minlength="6" placeholder="At least 6 characters"
+                       required>
+
+                <button class="primary-btn full-btn">Create Account →</button>
+            </form>
+            <p id="registerMessage" class="message"></p>
+            <p class="switch">Already have an account?
+                <a href="#" onclick="showLogin(event)">Sign in</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN DASHBOARD -->
+<main id="dashboard" class="hidden">
+
+    <section class="welcome-section">
+        <div>
+            <p class="eyebrow">YOUR SMART PARKING COMPANION</p>
+            <h1>Find a spot. <span>Park with ease.</span></h1>
+            <p class="muted">Discover available parking and reserve your space in seconds.</p>
+        </div>
+        <div class="welcome-illustration">🚙</div>
+    </section>
+
+    <!-- SEARCH -->
+    <section id="parking" class="search-panel">
+        <div class="search-title">
+            <div class="search-icon">⌖</div>
+            <div>
+                <h2>Find your parking</h2>
+                <p class="muted">Choose your destination and check availability.</p>
+            </div>
+        </div>
+
+        <div class="search-fields">
+            <div class="field">
+                <label for="locationSelect">Parking location</label>
+                <select id="locationSelect">
+                    <option value="all">All parking locations</option>
+                    <option value="central">Central City Parking</option>
+                    <option value="mall">Green Mall Parking</option>
+                    <option value="station">City Station Parking</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="vehicle">Vehicle type</label>
+                <select id="vehicle">
+                    <option value="Car">Car</option>
+                    <option value="Bike">Bike</option>
+                </select>
+            </div>
+            <button class="primary-btn search-btn"
+                    onclick="searchParking()">Search Slots →</button>
+        </div>
+    </section>
+
+    <!-- COUNTS -->
+    <section class="stats-grid">
+        <article class="stat-card">
+            <div class="stat-top">
+                <span>Total Spaces</span>
+                <span class="stat-icon blue-bg">▦</span>
+            </div>
+            <h2 id="totalCount">18</h2>
+            <p>Across demo locations</p>
+        </article>
+
+        <article class="stat-card">
+            <div class="stat-top">
+                <span>Available Now</span>
+                <span class="stat-icon green-bg">✓</span>
+            </div>
+            <h2 id="availableCount">--</h2>
+            <p>Spaces ready to book</p>
+        </article>
+
+        <article class="stat-card">
+            <div class="stat-top">
+                <span>Occupied</span>
+                <span class="stat-icon red-bg">●</span>
+            </div>
+            <h2 id="occupiedCount">--</h2>
+            <p>Currently unavailable</p>
+        </article>
+
+        <article class="stat-card">
+            <div class="stat-top">
+                <span>My Bookings</span>
+                <span class="stat-icon purple-bg">▣</span>
+            </div>
+            <h2 id="bookingCount">0</h2>
+            <p>Active reservations</p>
+        </article>
+    </section>
+
+    <!-- PARKING SLOTS -->
+    <section class="parking-section">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">PARKING OVERVIEW</p>
+                <h2>Choose your parking slot</h2>
+                <p id="locationDescription" class="muted">
+                    Select an available space to continue.
+                </p>
+            </div>
+            <span class="live-label"><span class="live-dot"></span> Demo availability</span>
+        </div>
+
+        <div class="legend">
+            <span><i class="legend-box available"></i> Available</span>
+            <span><i class="legend-box occupied"></i> Occupied</span>
+            <span><i class="legend-box selected"></i> Selected</span>
+            <span><i class="legend-box booked"></i> Your booking</span>
+        </div>
+
+        <div class="parking-layout">
+            <div class="slots-panel">
+                <div class="parking-entrance">↓ ENTRY / EXIT ↓</div>
+                <div id="slotGrid" class="slot-grid"></div>
+                <p class="parking-note">Select a green space to view its details.</p>
+            </div>
+
+            <aside class="booking-card">
+                <div class="booking-card-icon">🅿️</div>
+                <p class="eyebrow">YOUR SELECTION</p>
+                <h2 id="selectedSlotTitle">No slot selected</h2>
+                <p id="selectedSlotDescription" class="muted">
+                    Select an available parking space from the layout.
+                </p>
+
+                <div class="booking-divider"></div>
+
+                <div class="detail-row">
+                    <span>Location</span>
+                    <strong id="detailLocation">—</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Vehicle</span>
+                    <strong id="detailVehicle">Car</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Duration</span>
+                    <select id="duration">
+                        <option value="1">1 hour</option>
+                        <option value="2">2 hours</option>
+                        <option value="3">3 hours</option>
+                        <option value="4">4 hours</option>
+                    </select>
+                </div>
+                <div class="detail-row">
+                    <span>Price per hour</span>
+                    <strong id="hourlyPrice">₹50</strong>
+                </div>
+
+                <div class="total-row">
+                    <span>Estimated total</span>
+                    <strong id="totalPrice">₹0</strong>
+                </div>
+
+                <button id="bookBtn" class="primary-btn full-btn"
+                        onclick="bookSlot()" disabled>
+                    Confirm Booking →
+                </button>
+                <p class="small-note">Demo only. No real payment is taken.</p>
+                <p id="bookingMessage" class="message"></p>
+            </aside>
+        </div>
+    </section>
+
+    <!-- BOOKINGS -->
+    <section id="myBooking" class="my-booking-section">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">YOUR RESERVATIONS</p>
+                <h2>My bookings</h2>
+                <p class="muted">View or cancel your active parking reservations.</p>
+            </div>
+        </div>
+        <div id="bookingList" class="booking-list"></div>
+    </section>
+
+    <footer>
+        <a class="brand" href="#">ParkEase<span class="dot">.</span></a>
+        <p>Making every journey easier, one parking spot at a time.</p>
+        <small>© 2026 ParkEase. Student project demonstration.</small>
+    </footer>
+</main>
+
+<!-- CONFIRMATION MODAL -->
+<div id="confirmationModal" class="modal hidden">
+    <div class="modal-card">
+        <div class="success-icon">✓</div>
+        <h2>Parking booked!</h2>
+        <p class="muted">Your demo reservation has been created successfully.</p>
+        <div class="confirmation-details">
+            <p>Booking ID <strong id="confirmId"></strong></p>
+            <p>Parking slot <strong id="confirmSlot"></strong></p>
+            <p>Location <strong id="confirmLocation"></strong></p>
+            <p>Total price <strong id="confirmPrice"></strong></p>
+        </div>
+        <button class="primary-btn full-btn"
+                onclick="closeConfirmation()">View My Bookings</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
